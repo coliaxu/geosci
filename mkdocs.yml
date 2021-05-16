@@ -46,3 +46,5 @@ nav:
     - Report Issues: https://github.com/coliaxu/geosci/issues
     - API Reference:
           - geosci module: geosci.md
+    - Notebooks:
+          -notebooks/ipyleaflet_intro.ipynb
