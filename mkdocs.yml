@@ -47,4 +47,5 @@ nav:
     - API Reference:
           - geosci module: geosci.md
     - Notebooks:
-          -notebooks/ipyleaflet_intro.ipynb
+          - notebooks/ipyleaflet_intro.ipynb
+          - notebooks/folium_into.ipynb
