@@ -61,12 +61,9 @@ class Map(ipyleaflet.Map):
             TypeError: If the input geojson is not a str or dict.
         """
         import json
-    # 
-    # import random
-    # import requests
 
-        if layer_name == "Untitled":
-            layer_name = "Untitled " + random_string()
+        # if layer_name == "Untitled":
+            # layer_name = "Untitled " + random_string()
 
         if isinstance(in_geojson, str):
 
@@ -91,7 +88,43 @@ class Map(ipyleaflet.Map):
                 "fill": True,
                 "fillColor": "#0000ff",
                 "fillOpacity": 0.4,
-                }
+            }
 
-        geo_json = ipyleaflet.GeoJSON(data=data, style=style, name=layer_name)
+        geo_json = ipyleaflet.GeoJSON(data= data, style= style, layer_name=layer_name)
         self.add_layer(geo_json)
+
+    def add_shp(self, in_shp, style= None,layer_name = "Untitled"):
+        geojson = shp_to_geojson(in_shp)
+        self.add_geojson(geojson, style= style, layer_name= layer_name)
+
+
+def shp_to_geojson(in_shp, out_geojson=None):
+    """Converts a shapefile to GeoJSON.
+    Args:
+        in_shp (str): The file path to the input shapefile.
+        out_geojson (str, optional): The file path to the output GeoJSON. Defaults to None.
+    Raises:
+        FileNotFoundError: If the input shapefile does not exist.
+    Returns:
+        dict: The dictionary of the GeoJSON.
+    """
+    import json
+    import shapefile
+
+    in_shp = os.path.abspath(in_shp)
+
+    if not os.path.exists(in_shp):
+        raise FileNotFoundError("The provided shapefile could not be found.")
+
+    sf = shapefile.Reader(in_shp)
+    geojson = sf.__geo_interface__
+
+    if out_geojson is None:
+        return geojson
+    else:
+        out_geojson = os.path.abspath(out_geojson)
+        out_dir = os.path.dirname(out_geojson)
+        if not os.path.exists(out_dir):
+            os.makedirs(out_dir)
+        with open(out_geojson, "w") as f:
+            f.write(json.dumps(geojson))
