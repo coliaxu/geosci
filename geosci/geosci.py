@@ -7,7 +7,11 @@ from ipyleaflet import FullScreenControl, LayersControl, DrawControl, MeasureCon
 
 
 class Map(ipyleaflet.Map):
+    """this map class inherits the ipyleaflet Map class
 
+    Args:
+        ipyleaflet (ipyleaflet.Map): An ipyleaflet map
+    """    
     def __init__(self, **kwargs):
 
         if "center" not in kwargs:
@@ -52,15 +56,17 @@ class Map(ipyleaflet.Map):
                 self.add_layer(layer)
 
     def add_geojson(self, in_geojson, style= None, layer_name= "Untitled"):
-        """Adds a GeoJSON file to the map.
+        """adds a Geojson to the map
+
         Args:
-            in_geojson (str): The file path to the input GeoJSON.
-            style (dict, optional): The style for the GeoJSON layer. Defaults to None.
-            layer_name (str, optional): The layer name for the GeoJSON layer. Defaults to "Untitled".
+            in_geojson (str): The file path of the input Geojson
+            style (dict, optional): The style of the Geojson layer. Defaults to None.
+            layer_name (str, optional): The layer name for the Geojson layer. Defaults to "Untitled".
+
         Raises:
-            FileNotFoundError: If the provided file path does not exist.
-            TypeError: If the input geojson is not a str or dict.
-        """
+            FileNotFoundError: If the provided file path does not exsit.
+            TypeError: If the input Geojson is not a str or dict.
+        """        
         import json
 
         if layer_name == "Untitled":
@@ -95,6 +101,12 @@ class Map(ipyleaflet.Map):
         self.add_layer(geo_json)
 
     def add_shp(self, in_shp, style= None,layer_name = "Untitled"):
+        """Adds a shapefile layer to the map.
+        Args:
+            in_shp (str): The file path to the input shapefile.
+            style (dict, optional): The style dictionary. Defaults to None.
+            layer_name (str, optional): The layer name for the shapefile layer. Defaults to "Untitled".
+        """
         geojson = shp_to_geojson(in_shp)
         self.add_geojson(geojson, style= style, layer_name= layer_name)
 
