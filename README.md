@@ -18,7 +18,11 @@
 -   Free software: MIT license
 -   Documentation: https://coliaxu.github.io/geosci
     
-
+## Installation
+### Cionda
+```
+conda install geosci -c conda-forge
+```
 ## Features
 
 -   TODO

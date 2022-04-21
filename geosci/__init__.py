@@ -2,4 +2,7 @@
 
 __author__ = """Haixia Xu"""
 __email__ = 'coliaxu@gmail.com'
-__version__ = '0.0.2'
+__version__ = '0.0.4'
+
+from .geosci import *
+from .utils import *
