@@ -19,7 +19,7 @@
 -   Documentation: https://coliaxu.github.io/geosci
     
 ## Installation
-### Cionda
+### Conda
 ```
 conda install geosci -c conda-forge
 ```
