@@ -1,9 +1,8 @@
 # geosci
 
-
 [![image](https://img.shields.io/pypi/v/geosci.svg)](https://pypi.python.org/pypi/geosci)
 [![image](https://colab.research.google.com/assets/colab-badge.svg)](https://gishub.org/geosci-colab)
-[![image](https://binder.pangeo.io/badge_logo.svg)](https://binder.pangeo.io/v2/gh/giswqs/geosci/master)
+
 [![image](https://img.shields.io/conda/vn/conda-forge/geosci.svg)](https://anaconda.org/conda-forge/geosci)
 <!-- [![image](https://pepy.tech/badge/geosci)](https://pepy.tech/project/geosci) -->
 <!-- [![image](https://github.com/giswqs/geosci/workflows/docs/badge.svg)](https://geosci.org) -->

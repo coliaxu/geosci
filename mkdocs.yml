@@ -19,13 +19,7 @@ theme:
 
 plugins:
     - search
-    - mkdocstrings:
-        handlers:
-          python:
-            setup_commands:
-              - import sys
-              - sys.path.append("src")
-            # or sys.path.insert(0, "src")
+    - mkdocstrings
     - git-revision-date
     - mkdocs-jupyter:
           include_source: True
