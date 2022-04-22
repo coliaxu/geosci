@@ -51,4 +51,3 @@ nav:
           - notebooks/ipyleaflet_intro.ipynb
           - notebooks/folium_into.ipynb
           - notebooks/geosci_intro.ipynb
-          - notebooks/geojson_intro.ipynb
