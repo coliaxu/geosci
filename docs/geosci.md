@@ -1,4 +1,0 @@
- 
-# geosci module
-
-::: geosci.geosci

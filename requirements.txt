@@ -1,4 +1,0 @@
-earthengine-api
-folium
-ipyleaflet
-pyshp
