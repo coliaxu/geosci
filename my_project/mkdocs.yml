@@ -1,1 +1,42 @@
-site_name: My Docs
+site_name: geosci
+
+site_url: https://github.com/coliaxu/geosci
+
+repo_url: https://github.com/coliaxu/geosci
+
+theme:
+    palette:
+        scheme: preference
+    name: material
+    icon:
+        repo: fontawesome/brands/github
+    features:
+        - navigation.instant
+        - navigation.tracking
+        - navigation.top
+        - search.highlight
+        - search.share
+    custom_dir: "docs/overrides"
+
+plugins:
+    - search
+    - mkdocstrings
+    - git-revision-date
+    # - pdf-export
+    - mkdocs-jupyter:
+          include_source: True
+          ignore_h1_titles: True
+          #   execute: True
+
+markdown_extensions:
+    - attr_list
+    - pymdownx.superfences
+    - pymdownx.highlight:
+          linenums: true
+    - toc:
+          permalink: true
+
+extra:
+  analytics:
+    provider: google
+    property: UA-186406134-1
