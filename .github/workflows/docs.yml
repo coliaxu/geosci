@@ -1,19 +1,31 @@
-   
-name: Publish docs via GitHub Pages
+name: docs
 on:
-  push:
-    branches:
-      - master
-
+    push:
+        branches:
+            - master
 jobs:
-  build:
-    name: Deploy docs
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout master
-        uses: actions/checkout@v1
-
-      - name: Deploy docs
-        uses: mhausenblas/mkdocs-deploy-gh-pages@master
-        env:
-          GITHUB_TOKEN: ${{ secrets.PERSONAL_TOKEN }}
+    deploy:
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@v2
+            - uses: actions/setup-python@v2
+              with:
+                  python-version: 3.9
+            - name: Install GDAL
+              run: |
+                  python -m pip install --upgrade pip
+                  pip install --find-links=https://girder.github.io/large_image_wheels --no-cache GDAL
+            - name: Test GDAL installation
+              run: |
+                  python -c "from osgeo import gdal"
+                  gdalinfo --version
+            - name: Install dependencies
+              run: |
+                  python -m pip install --upgrade pip
+                  pip install --user --no-cache-dir Cython
+                  pip install codespell -r requirements.txt -r requirements_dev.txt
+                  pip install .
+            - run: pip install -r requirements_docs.txt
+            - run: mkdocs gh-deploy --force
+              env:
+                  USE_FOLIUM: ${{ secrets.USE_FOLIUM }}
