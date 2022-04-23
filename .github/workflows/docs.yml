@@ -1,31 +1,25 @@
 name: docs
 on:
-    push:
-        branches:
-            - master
+  push:
+    branches:
+      - master
+      - main
 jobs:
-    deploy:
-        runs-on: ubuntu-latest
-        steps:
-            - uses: actions/checkout@v2
-            - uses: actions/setup-python@v2
-              with:
-                  python-version: 3.9
-            - name: Install GDAL
-              run: |
-                  python -m pip install --upgrade pip
-                  pip install --find-links=https://girder.github.io/large_image_wheels --no-cache GDAL
-            - name: Test GDAL installation
-              run: |
-                  python -c "from osgeo import gdal"
-                  gdalinfo --version
-            - name: Install dependencies
-              run: |
-                  python -m pip install --upgrade pip
-                  pip install --user --no-cache-dir Cython
-                  pip install codespell -r requirements.txt -r requirements_dev.txt
-                  pip install .
-            - run: pip install -r requirements_docs.txt
-            - run: mkdocs gh-deploy --force
-              env:
-                  USE_FOLIUM: ${{ secrets.USE_FOLIUM }}
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-python@v2
+        with:
+          python-version: 3.x
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install --user --no-cache-dir Cython
+          pip install --user -r requirements.txt
+      - name: Install dependencies
+        run: pip install mkdocs-material mkdocstrings mkdocs-git-revision-date-plugin mkdocs-jupyter mkdocs-pdf-export-plugin ipykernel
+      - name: depoly
+        run: mkdocs gh-deploy --force
+        env:
+          RUN_GITHUB_ACTION: ${{ secrets.RUN_GITHUB_ACTION }}
