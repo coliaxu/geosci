@@ -1,17 +1,20 @@
-# Welcome to MkDocs
+# Welcome to geosci
 
-For full documentation visit [mkdocs.org](https://www.mkdocs.org).
 
-## Commands
+[![image](https://img.shields.io/pypi/v/geosci.svg)](https://pypi.python.org/pypi/geosci)
 
-* `mkdocs new [dir-name]` - Create a new project.
-* `mkdocs serve` - Start the live-reloading docs server.
-* `mkdocs build` - Build the documentation site.
-* `mkdocs -h` - Print help message and exit.
 
-## Project layout
+**A Python package for interactive mapping**
 
-    mkdocs.yml    # The configuration file.
-    docs/
-        index.md  # The documentation homepage.
-        ...       # Other markdown pages, images and other files.
+
+-   Free software: MIT license
+-   Documentation: <https://coliaxu.github.io/geosci>
+    
+
+## Features
+
+-   TODO
+
+## Credits
+
+This package was created with [Cookiecutter](https://github.com/cookiecutter/cookiecutter) and the [giswqs/pypackage](https://github.com/giswqs/pypackage) project template.
